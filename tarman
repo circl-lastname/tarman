@@ -47,7 +47,7 @@ if [ $1 = "install" ]; then
     exit
   fi
 
-  if [ -f "/var/lib/$3" ]; then
+  if [ -f "/var/lib/tarman/$3" ]; then
     >&2 echo "tarman: Name is already used by another package."
     exit
   fi
