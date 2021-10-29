@@ -3,9 +3,9 @@
 usage () {
 cat << EOF
 tarman (0.9) - A package manager for installing directories.
-usage: $0 install <directory> <name>
-       $0 remove <name>
-       $0 list
+usage: tarman install <directory> <name>
+       tarman remove <name>
+       tarman list
 
 When using install, the contents of directory will be copied to / after
 checking for any conflicting files.
@@ -19,7 +19,7 @@ EOF
 
 rootCheck () {
   if [ "$EUID" -ne 0 ]; then
-    >&2 echo "$0: Must be run as root."
+    >&2 echo "tarman: Must be run as root."
     exit
   fi
 
@@ -38,17 +38,17 @@ if [ $1 = "install" ]; then
   rootCheck
 
   if [ $# -ne 3 ]; then
-    >&2 echo "$0: Need directory and name."
+    >&2 echo "tarman: Need directory and name."
     exit
   fi
 
   if [ ! -d "$2" ]; then
-    >&2 echo "$0: $2: Not a directory."
+    >&2 echo "tarman: $2: Not a directory."
     exit
   fi
 
   if [ -f "/var/lib/$3" ]; then
-    >&2 echo "$0: Name is already used by another package."
+    >&2 echo "tarman: Name is already used by another package."
     exit
   fi
 
@@ -65,7 +65,7 @@ if [ $1 = "install" ]; then
   done <<< "$FILES"
 
   if [ ! -z "$CONFLICTS" ]; then
-    >&2 printf "$0: Installation aborted - the following files already exist:\n$CONFLICTS"
+    >&2 printf "tarman: Installation aborted - the following files already exist:\n$CONFLICTS"
     exit
   fi
 
@@ -83,12 +83,12 @@ if [ $1 = "remove" ]; then
   rootCheck
 
   if [ $# -ne 2 ]; then
-    >&2 echo "$0: Need name."
+    >&2 echo "tarman: Need name."
     exit
   fi
 
   if [ ! -f "/var/lib/tarman/$2" ]; then
-    >&2 echo "$0: Package $2 doesn't exist."
+    >&2 echo "tarman: Package $2 doesn't exist."
     exit
   fi
 
