@@ -17,10 +17,14 @@ EOF
   exit
 }
 
+error () {
+  >&2 echo "tarman: $1"
+  exit 1
+}
+
 rootCheck () {
   if [ "$EUID" -ne 0 ]; then
-    >&2 echo "tarman: Must be run as root."
-    exit
+    error "Must be run as root."
   fi
 
   # Now that we are root, might as well create the tarman directory if it doesn't exist
@@ -38,18 +42,15 @@ if [ $1 = "install" ]; then
   rootCheck
 
   if [ $# -ne 3 ]; then
-    >&2 echo "tarman: Need directory and name."
-    exit
+    error "Need directory and name."
   fi
 
   if [ ! -d "$2" ]; then
-    >&2 echo "tarman: $2: Not a directory."
-    exit
+    error "$2: Not a directory."
   fi
 
   if [ -f "/var/lib/tarman/$3" ]; then
-    >&2 echo "tarman: Name is already used by another package."
-    exit
+    error "Name is already used by another package."
   fi
 
   echo "Getting files..."
@@ -65,8 +66,7 @@ if [ $1 = "install" ]; then
   done <<< "$FILES"
 
   if [ ! -z "$CONFLICTS" ]; then
-    >&2 printf "tarman: Installation aborted - the following files already exist:\n$CONFLICTS"
-    exit
+    error "Installation aborted - the following files already exist:$'\n'$CONFLICTS"
   fi
 
   echo "Saving package record..."
@@ -83,13 +83,11 @@ if [ $1 = "remove" ]; then
   rootCheck
 
   if [ $# -ne 2 ]; then
-    >&2 echo "tarman: Need name."
-    exit
+    error "Need name."
   fi
 
   if [ ! -f "/var/lib/tarman/$2" ]; then
-    >&2 echo "tarman: Package $2 doesn't exist."
-    exit
+    error "Package $2 doesn't exist."
   fi
 
   echo "Getting files..."
