@@ -18,7 +18,7 @@ EOF
 }
 
 error () {
-  >&2 echo "tarman: $1"
+  >&2 echo -e "tarman: $1"
   exit 1
 }
 
@@ -61,7 +61,7 @@ if [ $1 = "install" ]; then
   CONFLICTS=
   while read FILE; do # This is weird so that spaces in filenames work
     if [ -f "/$FILE" ]; then
-      CONFLICTS=$CONFLICTS$'\n'/$FILE
+      CONFLICTS="$CONFLICTS\n        /$FILE" # The space here aligns the conflicts list to the rest of the error
     fi
   done <<< "$FILES"
 
