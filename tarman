@@ -55,7 +55,7 @@ if [ $1 = "install" ]; then
 
   echo "Getting files..."
   cd "$2" # I want it to begin with ./ to make other code easier
-  FILES=$(find -type f)
+  FILES=$(find -L -type f) # Get a list of every file in the package (including symlinks)
 
   echo "Checking for conflicts..."
   CONFLICTS=
