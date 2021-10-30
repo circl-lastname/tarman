@@ -1,7 +1,9 @@
 # Tarman
 A package manager for installing directories. 
 ## Why
-Whenever you want to install a piece of software that only comes in a tarball (hence the name), simply create a directory, place all the files ase they would be in your root file system, and install using Tarman!
+A lot of software (especially closed source) only comes in a tarball (hence the name).
+
+Using Tarman, you can simply create a directory, place all the files as they would be in your root file system, and install! It will then allow you to remove the files like you would with any other package manager.
 ## Help
 ```
 tarman (0.9) - A package manager for installing directories.
