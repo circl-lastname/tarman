@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "Installing tarman using itself...\n\n"
+printf "Installing Tarman using itself...\n\n"
 
 mkdir -p temp/usr/local/bin
 cp tarman temp/usr/local/bin
