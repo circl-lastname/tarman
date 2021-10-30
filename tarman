@@ -61,12 +61,12 @@ if [ $1 = "install" ]; then
   CONFLICTS=
   while read FILE; do # This is weird so that spaces in filenames work
     if [ -f "/$FILE" ]; then
-      CONFLICTS=$CONFLICTS/$FILE$'\n'
+      CONFLICTS=$CONFLICTS$'\n'/$FILE
     fi
   done <<< "$FILES"
 
   if [ ! -z "$CONFLICTS" ]; then
-    error "Installation aborted - the following files already exist:$'\n'$CONFLICTS"
+    error "Installation aborted - the following files already exist:$CONFLICTS"
   fi
 
   echo "Saving package record..."
