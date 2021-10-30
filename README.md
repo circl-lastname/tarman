@@ -26,3 +26,5 @@ This tool may or may not break your system.
 `sudo tarman remove tarman`
 ## Upgrading
 Uninstall, then install. Don't worry, package records are not removed.
+## Notes
+While not a huge problem, it will not remove any directories which were created as part of the package.
