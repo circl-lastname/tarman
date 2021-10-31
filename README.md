@@ -21,8 +21,14 @@ Must be run as root.
 This tool may or may not break your system.
 ```
 ## Installing
+### Debian, Ubuntu, etc
+Visit the releases page, download the deb file, and install using either a graphical tool or `sudo apt install ./tarman.deb`
+### Other
 `./install.sh`
 ## Uninstalling
+### Debian, Ubuntu, etc
+Uninstall using either a graphical tool or `sudo apt remove tarman`
+### Other
 `sudo tarman remove tarman`
 ## Upgrading
 Uninstall, then install. Don't worry, package records are not removed.
