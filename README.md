@@ -22,7 +22,7 @@ This tool may or may not break your system.
 ```
 ## Installing
 ### Debian, Ubuntu, etc
-Visit the releases page, download the deb file, and install using either a graphical tool or `sudo apt install ./tarman.deb`
+Visit the [releases page](https://github.com/circl-lastname/tarman/releases), download the deb file, and install using either a graphical tool or `sudo apt install ./tarman.deb`
 ### Other
 `./install.sh`
 ## Uninstalling
