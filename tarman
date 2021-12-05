@@ -73,7 +73,7 @@ if [ $1 = "install" ]; then
   echo -n "$FILES" > "/var/lib/tarman/$3"
 
   echo "Installing..."
-  cp -a . /
+  cp -a --no-preserve=ownership . /
 
   echo "Done!"
   exit
