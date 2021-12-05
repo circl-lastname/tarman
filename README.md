@@ -8,7 +8,7 @@ Using Tarman, you can simply create a directory, place all the files as they wou
 You can also use it when you have software you compiled locally, and don't want to bother with Makefiles to uninstall.
 ## Help
 ```
-tarman (0.9.1) - A package manager for installing directories.
+tarman (0.9.2) - A package manager for installing directories.
 usage: tarman install <directory> <name>
        tarman remove <name>
        tarman list

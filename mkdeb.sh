@@ -6,7 +6,7 @@ mkdir temp/DEBIAN
 cp tarman temp/usr/local/bin
 cat << EOF > temp/DEBIAN/control
 Package: tarman
-Version: 0.9.1
+Version: 0.9.2
 Section: admin
 Priority: optional
 Architecture: all
